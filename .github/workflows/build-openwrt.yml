@@ -20,7 +20,7 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -67,6 +67,17 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+    
+    - name: Download custom apps
+      run: |
+        cd openwrt
+        git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic ./package/luci-app-unblockneteasemusic
+        git clone https://github.com/vernesong/OpenClash ~/OpenClash --depth=1
+        mv ~/OpenClash/luci-app-openclash ./package/luci-app-openclash
+        git clone https://github.com/cokebar/luci-app-vlmcsd ./package/luci-app-vlmcsd
+        git clone https://github.com/cokebar/openwrt-vlmcsd ./package/openwrt-vlmcsd
+        git clone https://github.com/sirpdboy/luci-app-netdata ./package/luci-app-netdata
+        git clone https://github.com/jerrykuku/luci-theme-argon ./package/luci-theme-argon
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
