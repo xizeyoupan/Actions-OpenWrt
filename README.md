@@ -8,6 +8,8 @@
 
 A template for building OpenWrt with GitHub Actions
 
+自用固件，openwrt官方源码，仅添加`UnblockNeteaseMusic`、`OpenClash`、`vlmcsd`、`netdata`、`tencentcloud_ddns`插件和`argon`主题。
+
 ## Usage
 
 - Click the [Use this template](https://github.com/P3TERX/Actions-OpenWrt/generate) button to create a new repository.
